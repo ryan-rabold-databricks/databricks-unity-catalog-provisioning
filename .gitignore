@@ -1,0 +1,104 @@
+# Terraform Files
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Terraform variable files (may contain sensitive data)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform CLI configuration files
+.terraformrc
+terraform.rc
+
+# Terraform lock file (commit this for production, optional for modules)
+.terraform.lock.hcl
+
+# Backend configuration (may contain sensitive data)
+backend.tf
+backend.hcl
+
+# Sensitive data files
+secrets/
+*.secret
+*.key
+*.pem
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# IDE Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Environment files
+.env
+.env.local
+.env.*
+!.env.example
+
+# Test and coverage files
+coverage/
+*.test
+*.out
+
+# Documentation build artifacts
+site/
+.cache/
+
+# Python (if using helper scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+ENV/
+.venv
+
+# Node.js (if using helper scripts)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Misc
+.terraform.d/
+.terraform.tfstate.lock.info
+
+# Project-specific excludes
+CHANGELOG.md
+PROMPT.md
+COMPLETION_SUMMARY.md
+
+# Terraform plan files
+tfplan
+*.tfplan
+

@@ -1,0 +1,19 @@
+{
+  "schema_name": "analytics_team",
+  "schema_comment": "Analytics team production schema for reporting and dashboards",
+  "schema_properties": {
+    "environment": "prod",
+    "team": "analytics",
+    "purpose": "reporting",
+    "cost_center": "analytics",
+    "owner": "analytics-team@company.com",
+    "sla": "99.9",
+    "backup_policy": "daily"
+  },
+  "group_name": "analytics_group",
+  "privileges": [
+    "USE_SCHEMA",
+    "SELECT"
+  ]
+}
+

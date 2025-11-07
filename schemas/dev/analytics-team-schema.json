@@ -1,0 +1,19 @@
+{
+  "schema_name": "analytics_team",
+  "schema_comment": "Analytics team schema for exploratory data analysis and reporting",
+  "schema_properties": {
+    "environment": "dev",
+    "team": "analytics",
+    "purpose": "data_analysis",
+    "cost_center": "analytics",
+    "owner": "analytics-team@company.com"
+  },
+  "group_name": "demo_analytics_group",
+  "privileges": [
+    "USE_SCHEMA",
+    "CREATE_TABLE",
+    "SELECT",
+    "MODIFY"
+  ]
+}
+

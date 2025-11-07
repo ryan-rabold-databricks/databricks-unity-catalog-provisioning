@@ -1,0 +1,18 @@
+{
+  "schema_name": "analytics_team",
+  "schema_comment": "Analytics team schema for data validation and testing",
+  "schema_properties": {
+    "environment": "test",
+    "team": "analytics",
+    "purpose": "data_validation",
+    "cost_center": "analytics",
+    "owner": "analytics-team@company.com"
+  },
+  "group_name": "analytics_group",
+  "privileges": [
+    "USE_SCHEMA",
+    "CREATE_TABLE",
+    "SELECT"
+  ]
+}
+

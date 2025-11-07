@@ -1,0 +1,39 @@
+# Example Terraform Variables for Test Environment
+#
+# Copy this file to terraform.tfvars and fill in your values:
+#   cp terraform.tfvars.example terraform.tfvars
+#
+# Note: terraform.tfvars is gitignored to prevent secrets from being committed
+
+# Environment name
+environment = "test"
+
+# Unity Catalog name where schemas will be created
+catalog_name = "test_catalog"
+
+# Databricks authentication (use environment variables instead for security)
+# databricks_host  = "https://adb-984752964297111.11.azuredatabricks.net"
+# databricks_token = "dapi..."  # Never commit actual tokens!
+
+# Recommended: Use environment variables for authentication
+# export DATABRICKS_HOST="https://adb-984752964297111.11.azuredatabricks.net"
+# export DATABRICKS_TOKEN="your-token"
+#
+# Or use Databricks CLI profile:
+# export DATABRICKS_CONFIG_PROFILE="demo-workspace"
+#
+# Or use Azure AD Service Principal:
+# export ARM_CLIENT_ID="xxx"
+# export ARM_CLIENT_SECRET="xxx"
+# export ARM_TENANT_ID="xxx"
+# export DATABRICKS_HOST="https://adb-984752964297111.11.azuredatabricks.net"
+
+# Tags for resource organization
+tags = {
+  managed_by  = "terraform"
+  environment = "test"
+  project     = "databricks-unity-catalog"
+  team        = "data-platform"
+  cost_center = "engineering"
+}
+

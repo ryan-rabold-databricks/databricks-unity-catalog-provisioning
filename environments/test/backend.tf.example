@@ -1,0 +1,53 @@
+# Backend Configuration for Remote State Management
+#
+# This file configures where Terraform stores its state file.
+# For team collaboration, use a remote backend like Azure Storage.
+#
+# To use this configuration:
+# 1. Copy this file: cp backend.tf.example backend.tf
+# 2. Update with your Azure Storage details
+# 3. Uncomment the backend block in main.tf
+# 4. Run: terraform init -migrate-state
+
+# Azure Storage Backend (Recommended for Azure Databricks)
+terraform {
+  backend "azurerm" {
+    # Azure Storage Account details
+    resource_group_name  = "terraform-state-rg"
+    storage_account_name = "tfstate<unique_id>"  # Must be globally unique
+    container_name       = "tfstate"
+    key                  = "databricks/test/terraform.tfstate"
+
+    # Optional: Use SAS token or managed identity
+    # sas_token = "..."
+    # use_azuread_auth = true
+  }
+}
+
+# Alternative: Terraform Cloud Backend
+# terraform {
+#   backend "remote" {
+#     organization = "your-org"
+#     workspaces {
+#       name = "databricks-test"
+#     }
+#   }
+# }
+
+# Alternative: S3 Backend (for AWS)
+# terraform {
+#   backend "s3" {
+#     bucket = "terraform-state-bucket"
+#     key    = "databricks/test/terraform.tfstate"
+#     region = "us-east-1"
+#     
+#     # Enable state locking
+#     dynamodb_table = "terraform-state-lock"
+#     encrypt        = true
+#   }
+# }
+
+# Local Backend (Default - Not recommended for teams)
+# State file will be stored in the current directory
+# No configuration needed - Terraform uses local backend by default
+
