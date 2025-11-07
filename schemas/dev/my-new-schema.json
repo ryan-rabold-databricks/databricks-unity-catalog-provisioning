@@ -1,0 +1,16 @@
+{
+  "schema_name": "my_new_schema",
+  "schema_comment": "Description of my schema",
+  "schema_properties": {
+    "environment": "dev",
+    "team": "my_team",
+    "purpose": "data_analysis",
+    "owner": "team@company.com"
+  },
+  "group_name": "demo_analytics_group",
+  "privileges": [
+    "USE_SCHEMA",
+    "CREATE_TABLE",
+    "SELECT"
+  ]
+}
