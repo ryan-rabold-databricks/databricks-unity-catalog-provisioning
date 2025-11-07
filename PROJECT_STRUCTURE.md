@@ -226,8 +226,6 @@ Each JSON file represents a single schema:
 | File | Purpose |
 |------|---------|
 | `dev/analytics-team-schema.json` | Analytics team development workspace |
-| `dev/data-engineering-schema.json` | Data engineering ETL pipelines |
-| `dev/ml-experimentation-schema.json` | ML model experimentation |
 | `test/analytics-team-schema.json` | Analytics testing environment |
 | `prod/analytics-team-schema.json` | Analytics production environment |
 

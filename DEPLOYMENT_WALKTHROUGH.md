@@ -131,11 +131,9 @@ done
 
 In Databricks:
 1. Go to **Settings** → **Identity and access** → **Groups**
-2. Verify these groups exist:
+2. Verify the group exists:
    - `analytics_group`
-   - `data_engineering_group`
-   - `ml_group`
-3. Create any missing groups
+3. Create the group if it doesn't exist
 
 ---
 
@@ -225,9 +223,7 @@ Terraform will perform the following actions:
         }
     }
 
-  # ... (similar output for other schemas) ...
-
-Plan: 6 to add, 0 to change, 0 to destroy.
+Plan: 2 to add, 0 to change, 0 to destroy.
 
 Changes to Outputs:
   + catalog_name = "your_dev_catalog"
@@ -247,11 +243,11 @@ Changes to Outputs:
 Carefully review the plan and verify:
 
 - [ ] **Catalog name** is correct (your dev catalog, not prod!)
-- [ ] **Schema names** match what you expect (3 schemas)
-- [ ] **Group names** are correct
+- [ ] **Schema name** matches what you expect (analytics_team)
+- [ ] **Group name** is correct (analytics_group)
 - [ ] **Privileges** are appropriate for dev environment
 - [ ] **Properties** are set correctly
-- [ ] **Plan shows:** `6 to add, 0 to change, 0 to destroy`
+- [ ] **Plan shows:** `2 to add, 0 to change, 0 to destroy` (1 schema + 1 permission grant)
 - [ ] **No unexpected deletions** (0 to destroy)
 
 **If anything looks wrong, STOP and fix it before applying!**
@@ -297,19 +293,11 @@ Type `yes` and press Enter.
 **Expected Output:**
 ```
 module.databricks_schema["analytics-team-schema"].databricks_schema.this: Creating...
-module.databricks_schema["data-engineering-schema"].databricks_schema.this: Creating...
-module.databricks_schema["ml-experimentation-schema"].databricks_schema.this: Creating...
 module.databricks_schema["analytics-team-schema"].databricks_schema.this: Creation complete after 2s
-module.databricks_schema["data-engineering-schema"].databricks_schema.this: Creation complete after 2s
-module.databricks_schema["ml-experimentation-schema"].databricks_schema.this: Creation complete after 3s
 module.databricks_permissions["analytics-team-schema"].databricks_grants.this: Creating...
-module.databricks_permissions["data-engineering-schema"].databricks_grants.this: Creating...
-module.databricks_permissions["ml-experimentation-schema"].databricks_grants.this: Creating...
 module.databricks_permissions["analytics-team-schema"].databricks_grants.this: Creation complete after 1s
-module.databricks_permissions["data-engineering-schema"].databricks_grants.this: Creation complete after 1s
-module.databricks_permissions["ml-experimentation-schema"].databricks_grants.this: Creation complete after 1s
 
-Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
 Outputs:
 
@@ -320,16 +308,6 @@ schemas = {
     "schema_full_name" = "your_dev_catalog.analytics_team"
     "schema_id" = "your_dev_catalog.analytics_team"
     "schema_name" = "analytics_team"
-  }
-  "data-engineering-schema" = {
-    "schema_full_name" = "your_dev_catalog.data_engineering"
-    "schema_id" = "your_dev_catalog.data_engineering"
-    "schema_name" = "data_engineering"
-  }
-  "ml-experimentation-schema" = {
-    "schema_full_name" = "your_dev_catalog.ml_experimentation"
-    "schema_id" = "your_dev_catalog.ml_experimentation"
-    "schema_name" = "ml_experimentation"
   }
 }
 ```
@@ -345,10 +323,8 @@ schemas = {
    - Click on **Catalog** in the left sidebar
    - Find your catalog: `your_dev_catalog`
 3. **Verify Schemas**
-   - You should see 3 schemas:
+   - You should see the schema:
      - `analytics_team`
-     - `data_engineering`
-     - `ml_experimentation`
 4. **Check Schema Properties**
    - Click on a schema
    - Click the **Details** tab

@@ -21,7 +21,7 @@ module "databricks_schema" {
   schema_comment    = "This is my schema"
   schema_properties = {
     environment = "dev"
-    team        = "data-engineering"
+    team        = "analytics"
   }
 }
 ```

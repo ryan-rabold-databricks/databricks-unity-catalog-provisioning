@@ -51,7 +51,7 @@ environment  = "dev"
 
 ### 4. Create Schema Definitions
 
-Three teams need schemas in dev:
+The analytics team needs a schema in dev:
 
 **Analytics Team** (`../../schemas/dev/analytics-team.json`):
 ```json
@@ -69,37 +69,7 @@ Three teams need schemas in dev:
 }
 ```
 
-**Data Engineering** (`../../schemas/dev/data-engineering.json`):
-```json
-{
-  "schema_name": "etl_pipelines",
-  "schema_comment": "Data engineering ETL and transformation pipelines",
-  "schema_properties": {
-    "environment": "dev",
-    "team": "data_engineering",
-    "purpose": "etl",
-    "owner": "data-eng@acmecorp.com"
-  },
-  "group_name": "acmecorp_data_engineers",
-  "privileges": ["USE_SCHEMA", "CREATE_TABLE", "SELECT", "MODIFY"]
-}
-```
-
-**ML Team** (`../../schemas/dev/ml-team.json`):
-```json
-{
-  "schema_name": "ml_experiments",
-  "schema_comment": "ML team experimentation and model development",
-  "schema_properties": {
-    "environment": "dev",
-    "team": "ml_ops",
-    "purpose": "ml_experimentation",
-    "owner": "mlops@acmecorp.com"
-  },
-  "group_name": "acmecorp_ml_engineers",
-  "privileges": ["USE_SCHEMA", "CREATE_TABLE", "CREATE_FUNCTION", "SELECT", "MODIFY"]
-}
-```
+**Note:** You can add more schemas by creating additional JSON files in the `schemas/dev/` directory.
 
 ### 5. Initialize and Apply
 
@@ -111,8 +81,8 @@ terraform init
 terraform plan
 
 # Expected output:
-# Plan: 6 to add, 0 to change, 0 to destroy.
-# (3 schemas + 3 permission grants)
+# Plan: 2 to add, 0 to change, 0 to destroy.
+# (1 schema + 1 permission grant)
 
 # Apply the configuration
 terraform apply
@@ -160,10 +130,8 @@ SELECT * FROM test_table;
 Once validated in dev, promote to test:
 
 ```bash
-# Copy schema definitions to test
+# Copy schema definition to test
 cp ../../schemas/dev/analytics-team.json ../../schemas/test/
-cp ../../schemas/dev/data-engineering.json ../../schemas/test/
-cp ../../schemas/dev/ml-team.json ../../schemas/test/
 
 # Update environment in each file (change "dev" to "test")
 sed -i 's/"environment": "dev"/"environment": "test"/g' ../../schemas/test/*.json
@@ -186,10 +154,8 @@ terraform apply
 After successful testing, promote to prod:
 
 ```bash
-# Copy schema definitions to prod
+# Copy schema definition to prod
 cp ../../schemas/test/analytics-team.json ../../schemas/prod/
-cp ../../schemas/test/data-engineering.json ../../schemas/prod/
-cp ../../schemas/test/ml-team.json ../../schemas/prod/
 
 # Update environment and reduce privileges for prod
 sed -i 's/"environment": "test"/"environment": "prod"/g' ../../schemas/prod/*.json
@@ -219,8 +185,6 @@ After completing all steps, you'll have:
 - **Catalog**: `acmecorp_dev`
 - **Schemas**:
   - `analytics_workspace` (full access for analytics group)
-  - `etl_pipelines` (full access for data engineers)
-  - `ml_experiments` (full access for ML engineers)
 
 ### Test Environment
 - **Catalog**: `acmecorp_test`

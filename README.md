@@ -249,9 +249,7 @@ databricks-unity-catalog-provisioning/
 │
 ├── schemas/                           # Schema definitions (JSON files)
 │   ├── dev/                          # Development schemas
-│   │   ├── analytics-team-schema.json
-│   │   ├── data-engineering-schema.json
-│   │   └── ml-experimentation-schema.json
+│   │   └── analytics-team-schema.json
 │   │
 │   ├── test/                         # Test schemas
 │   │   └── analytics-team-schema.json

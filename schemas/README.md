@@ -225,8 +225,6 @@ Common privilege combinations:
 See the existing JSON files in each directory for complete examples:
 
 - `dev/analytics-team-schema.json` - Analytics team development
-- `dev/data-engineering-schema.json` - Data engineering pipelines
-- `dev/ml-experimentation-schema.json` - ML experimentation
 - `test/analytics-team-schema.json` - Analytics testing
 - `prod/analytics-team-schema.json` - Analytics production
 
