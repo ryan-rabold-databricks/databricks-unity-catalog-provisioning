@@ -10,7 +10,6 @@
   "group_name": "demo_analytics_group",
   "privileges": [
     "USE_SCHEMA",
-    "CREATE_TABLE",
     "SELECT"
   ]
 }
